@@ -6,6 +6,7 @@
 
 body{
 	/* Setting the default text color, size, page background and a font stack: */
+	font-size:0.825em;
 	color:#fcfcfc;
 	background-color:#355664;
 	font-family:Arial, Helvetica, sans-serif;
@@ -36,9 +37,9 @@ h1,h2,h3{
 
 h1{
 	/* The logo text */
-	font-size:4.5em;
+	font-size:4em;
 	padding:0.5em 0 0;
-	font-family: 'Trade Winds', cursive;
+	font-family: "Trade Winds", cursive;
 	text-shadow:0 4px 4px black;
 }
 
@@ -52,7 +53,7 @@ h3{
 
 
 h2{
-	font-size:2em;
+	font-size:2.2em;
 	font-weight:normal;
 	letter-spacing:0.01em;
 	text-transform:uppercase;
@@ -61,6 +62,7 @@ h2{
 p{
 	line-height:1.5em;
 	padding-bottom:1em;
+	font-size:1.2em;
 }
 
 .line{
@@ -79,11 +81,11 @@ div.article .line{
 	margin:1.3em 0;
 }
 
-div.footer .line{
+footer .line{
 	margin:2em 0;
 }
 
-div.nav{
+nav{
 	background:url(images/gradient_light.jpg) repeat-x 50% 50% #f8f8f8;
 	padding:0 5px;
 	position:absolute;
@@ -109,12 +111,12 @@ div.nav{
 
 /* The navigation styling: */
 
-div.nav ul li{
+nav ul li{
 	display:inline;
 }
 
-div.nav ul li a,
-div.nav ul li a:visited{
+nav ul li a,
+nav ul li a:visited{
 	color:#565656;
 	display:block;
 	float:left;
@@ -126,12 +128,12 @@ div.nav ul li a:visited{
 	text-transform:uppercase;
 }
 
-div.nav ul li a:hover{
+nav ul li a:hover{
 	text-decoration:none;
 	background-color:#f0f0f0;
 }
 
-div.nav, div.article, div.nav ul li a,div.figure{
+nav, div.article, nav ul li a, div.figure{
 	/* Applying CSS3 rounded corners: */
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -175,19 +177,19 @@ div.figure img{
 
 /* Footer styling: */
 
-div.footer{
+footer{
 	margin-bottom:30px;
 	text-align:center;
 	font-size:0.825em;
 }
 
 
-div.footer p{
+footer p{
 	margin-bottom:-2.5em;
 	position:relative;
 }
 
-div.footer a, div.footer a:visited{
+footer a, footer a:visited{
 	color:#cccccc;
 	background-color:#213e4a;
 	display:block;
@@ -196,17 +198,16 @@ div.footer a, div.footer a:visited{
 	position:relative;
 }
 
-div.footer a:hover{
+footer a:hover{
 	text-decoration:none;
 	background-color:#142830;
 }
 
-div.footer a.by{
+footer a.by{
 	float:left;
 }
 
-div.footer a.django{
+footer a.django{
 	float:right;
 	background-color:#355664;
 }
-
