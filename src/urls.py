@@ -16,5 +16,5 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
 
     (r'^$', 'core.views.homepage'),
-    (r'^inscricao/$', include('subscriptions.urls', namespace='subscriptions')),
+    (r'^inscricao/', include('subscriptions.urls', namespace='subscriptions')),
 )
