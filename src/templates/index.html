@@ -1,78 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="Site do evento EventeX">
-        <meta name="author" content="Diogo Damiani - @diogodamiani">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}favicon.ico" />
+{% extends 'base.html' %}
+{% block content %}
 
-        <title>EventeX 2012</title>
+<!-- Article 1 start -->
+<div class="line"></div>  <!-- Dividing line -->
+
+<div class="article" id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+    <h2>Bem-vindo ao EventeX</h2>
     
-        <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
-
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/default.css" />
-               
-        <!--[if lt IE 9]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"> </script>
-        <![endif]-->
-    </head>
+    <div class="line"></div>
     
-    <body>
+    <div class="articleBody clear">
+        <p>Você não pode perder essa oportunidade!</p>
+        <p>As inscrições já estão abertas!</p>
+        <p>Para dúvidas e mais informações entre em contato com 
+            <a href="mailto:eventex@eventex.com.br"> eventex@eventex.com.br </a>
+        </p>
+    </div>
+</div>
+<!-- Article 1 end -->
 
-    	<div class="section" id="page"> <!-- Defining the #page section with the section tag -->
-    
-            <header> <!-- Defining the header section of the page with the appropriate tag -->
-
-                <h1>EventeX</h1>
-                <h3>O evento mais sensacional do ano!</h3>
-                
-                <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
-                    <ul>
-                        <li><a href="#article1">Inscrições</a></li>
-                        <li><a href="#article2">Agenda</a></li>
-                        <li><a href="#article3">Palestrantes</a></li>
-                    </ul>
-                </nav>
-            </header>
-            
-            <div class="section" id="articles"> <!-- A new section with the articles -->
-
-				<!-- Article 1 start -->
-                <div class="line"></div>  <!-- Dividing line -->
-                
-                <div class="article" id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
-                    <h2>Bem-vindo ao EventeX</h2>
-                    
-                    <div class="line"></div>
-                    
-                    <div class="articleBody clear">
-                        <p>Você não pode perder essa oportunidade!</p>
-                        <p>Abertura das inscrições em 18 de Março de 2012.</p>
-                        <p>Para dúvidas e mais informações entre em contato com 
-                            <a href="mailto:eventex@eventex.com.br"> eventex@eventex.com.br </a>
-                        </p>
-                    </div>
-                </div>
-                
-				<!-- Article 1 end -->
-            </div>
-
-            <footer> <!-- Marking the footer section -->
-
-               <div class="line"></div>
-               
-               <p>Copyright 2012 - www.eventex.com.br</p> <!-- Change the copyright notice -->
-               
-               <a href="http://www.djangoproject.com/" class='django'><img src="http://media.djangoproject.com/img/badges/djangosite100x25_grey.gif" border="0" alt="A Django site." title="A Django site." /></a>
-
-               <a href="http://tutorialzine.com/2010/02/free-xhtml-css3-website-template/" class="by">Template by Tutorialzine</a>
-            </footer>
-            
-		</div> <!-- Closing the #page section -->
-        
-        <!-- JavaScript Includes -->
-        
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    </body>
-</html>
+{% endblock content %}
