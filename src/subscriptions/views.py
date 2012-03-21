@@ -1,5 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from forms import SubscriptionForm
 
@@ -25,3 +26,8 @@ def create(request):
     subscription = form.save()
     return HttpResponseRedirect(
         reverse('subscriptions:success', args=[ subscription.pk ]))
+
+def success(request, pk):
+    subscription = get_object_or_404(Subscription, pk=pk)
+    context = RequestContext(request, {'subscription': subscription})
+    return render_to_response('subscriptions/success.html', context)
