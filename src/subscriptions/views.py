@@ -1,4 +1,5 @@
-# Create your views here.
+# coding=utf-8
+
 from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render_to_response
@@ -29,7 +30,7 @@ def create(request):
     subscription = form.save()
 
     send_mail(subject=u'Cadastrado com Sucesso',
-              message=u'Obrigado pela sua inscrição!',
+              message=u'Obrigado pela sua inscrição!',
               from_email=settings.DEFAULT_FROM_EMAIL,
               recipient_list=[subscription.email])
 
