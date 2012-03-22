@@ -1,7 +1,10 @@
 # Create your views here.
+from django.conf import settings
+from django.core.mail import send_mail
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
+
 from forms import SubscriptionForm
 
 def subscribe(request):
@@ -24,6 +27,12 @@ def create(request):
         return render_to_response('subscriptions/new.html', context)
 
     subscription = form.save()
+
+    send_mail(subject=u'Cadastrado com Sucesso',
+              message=u'Obrigado pela sua inscrição!',
+              from_email=settings.DEFAULT_FROM_EMAIL,
+              recipient_list=[subscription.email])
+
     return HttpResponseRedirect(
         reverse('subscriptions:success', args=[ subscription.pk ]))
 
