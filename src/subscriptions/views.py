@@ -2,11 +2,14 @@
 
 from django.conf import settings
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 
 from forms import SubscriptionForm
+from models import Subscription
 
 def subscribe(request):
     if request.method == 'POST':
