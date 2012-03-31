@@ -1,20 +1,37 @@
 # coding=utf-8
 
 import datetime
-from django.contrib import admin
-from subscriptions.models import Subscription
+
+from django.contrib           import admin
+from django.utils.translation import ugettext as _ 
+from django.utils.translation import ungettext
+
+from subscriptions.models     import Subscription
 
 class SubscriptionAdmin(admin.ModelAdmin):
-	list_display = ('name', 'cpf', 'email', 'phone', 'created_at', 'subscribed_today')
+	list_display = ('name', 'cpf', 'email', 'phone', 'created_at', 'subscribed_today', 'paid')
 	date_hierarchy = 'created_at'
 	search_fields = ('name', 'cpf', 'email', 'phone', 'created_at')
 
-	list_filter = ['created_at']
+	list_filter = ('created_at', 'paid', )
 
 	def subscribed_today(self, obj):
 		return obj.created_at.date() == datetime.date.today()
 	
-	subscribed_today.short_description = u'Inscrito hoje?'
+	subscribed_today.short_description = _(u'Inscrito hoje?')
 	subscribed_today.boolean = True
+
+	actions = ['mark_as_paid']
+
+	def mark_as_paid(self, request, queryset):
+		count = queryset.update(paid=True)
+		msg = ungettext(
+				u'%(count)d inscrição foi marcada como paga.',
+				u'%(count)d inscrições foram marcadas como pagas.',
+				count
+			) % {'count': count}
+		self.message_user(request, msg)
+
+	mark_as_paid.short_description = _(u"Marcar como pagas")
 
 admin.site.register(Subscription, SubscriptionAdmin)
