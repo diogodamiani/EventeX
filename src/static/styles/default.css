@@ -86,7 +86,7 @@ footer .line{
 }
 
 nav{
-	background:url(images/gradient_light.jpg) repeat-x 50% 50% #f8f8f8;
+	background:url(../images/gradient_light.jpg) repeat-x 50% 50% #f8f8f8;
 	padding:0 5px;
 	position:absolute;
 	right:0;
@@ -231,10 +231,6 @@ input[type="text"]:focus{
 	border-color:#204656; 
 } 
 
-input[name="phone"]{ 
-	width:150px; 
-} 
-
 input[type="submit"]{ 
 	cursor:pointer;
 	border:1px solid #15242a;
@@ -253,3 +249,12 @@ input[type="submit"]:hover, input[type="submit"]:focus{
 input[type="submit"]:active{ 
 	margin-top:1px; 
 }
+
+input.ddd{
+	width:15px;
+	margin-right:5px;
+}
+
+input.phone{ 
+	width:100px; 
+} 

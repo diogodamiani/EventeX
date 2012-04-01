@@ -9,8 +9,6 @@
         <title>EventeX 2012</title>
     
         <link href='http://fonts.googleapis.com/css?family=Trade+Winds' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
-
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}styles/default.css" />
                
         <!--[if lt IE 9]>
@@ -34,8 +32,10 @@
                         <li><a href="#article3">Palestrantes</a></li>
                     </ul>
                 </nav>
+
+                <div class="line"></div>  <!-- Dividing line -->
             </header>
-            
+
             <div class="section" id="articles"> <!-- A new section with the articles -->
 				{% block content %}
                 {% endblock content %}
