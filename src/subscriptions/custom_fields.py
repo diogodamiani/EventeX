@@ -23,7 +23,7 @@ class PhoneField(forms.MultiValueField):
 
     def compress(self, data_list):
         if not data_list:
-            return None
+            return u''
 
         if data_list[0] in EMPTY_VALUES:
             raise forms.ValidationError(self.error_messages['ddd_invalid'])
