@@ -4,11 +4,10 @@ from django.core.urlresolvers import reverse
 from django.http              import HttpResponse, HttpResponseRedirect
 from django.shortcuts         import render_to_response, get_object_or_404
 from django.template          import RequestContext
-from django.core.mail         import send_mail
-from django.conf              import settings
 
 from forms                    import SubscriptionForm
 from models                   import Subscription
+from utils                    import send_subscription_email
 
 def subscribe(request):
     if request.method == 'POST':
@@ -39,8 +38,8 @@ def create(request):
     # Salva definitivamente o objeto no banco
     subscription.save()
 
-    if subscription.email:
-        send_confirmation(subscription.email)    
+    # Envia email de confirmação
+    send_subscription_email(subscription)
 
     return HttpResponseRedirect(
         reverse('subscriptions:success', args=[ subscription.pk ]))
@@ -49,10 +48,4 @@ def success(request, pk):
     subscription = get_object_or_404(Subscription, pk=pk)
     context = RequestContext(request, {'subscription': subscription})
     return render_to_response('subscriptions/success.html', context)
-
-def send_confirmation(email):
-    send_mail(subject=u'EventeX - Incrição',
-              message=u'Sua inscrição foi realizada com sucesso! Obrigado!',
-              from_email=settings.DEFAULT_FROM_EMAIL,
-              recipient_list=[email]
-    )
+    
