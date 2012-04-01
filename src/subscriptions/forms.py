@@ -8,6 +8,7 @@ from subscriptions.custom_fields import PhoneField
 
 class SubscriptionForm(forms.ModelForm):
     phone = PhoneField(label=_('Telefone'), required=False)
+    email = forms.EmailField(label=_('E-mail'), required=False)
 
     class Meta:
 		model = Subscription
