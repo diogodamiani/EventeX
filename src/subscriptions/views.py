@@ -1,15 +1,14 @@
 # coding=utf-8
 
-from django.conf import settings
-from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.shortcuts import get_object_or_404
-from django.template import RequestContext
+from django.http              import HttpResponse, HttpResponseRedirect
+from django.shortcuts         import render_to_response, get_object_or_404
+from django.template          import RequestContext
+from django.core.mail         import send_mail
+from django.conf              import settings
 
-from forms import SubscriptionForm
-from models import Subscription
+from forms                    import SubscriptionForm
+from models                   import Subscription
 
 def subscribe(request):
     if request.method == 'POST':
@@ -30,12 +29,18 @@ def create(request):
         context = RequestContext(request, {'form': form})
         return render_to_response('subscriptions/new.html', context)
 
-    subscription = form.save()
+    # Não salva o objeto imediatamente para verificar se o email esta com string vazia
+    # Antes: subscription = form.save()
+    subscription = form.save(commit=False)
+    
+    # Atribui o valor do form ou None, caso venha uma string vazia.
+    subscription.email = form.cleaned_data['email'] or None
+    
+    # Salva definitivamente o objeto no banco
+    subscription.save()
 
-    send_mail(subject=u'Cadastrado com Sucesso',
-              message=u'Obrigado pela sua inscrição!',
-              from_email=settings.DEFAULT_FROM_EMAIL,
-              recipient_list=[subscription.email])
+    if subscription.email:
+        send_confirmation(subscription.email)    
 
     return HttpResponseRedirect(
         reverse('subscriptions:success', args=[ subscription.pk ]))
@@ -44,3 +49,10 @@ def success(request, pk):
     subscription = get_object_or_404(Subscription, pk=pk)
     context = RequestContext(request, {'subscription': subscription})
     return render_to_response('subscriptions/success.html', context)
+
+def send_confirmation(email):
+    send_mail(subject=u'EventeX - Incrição',
+              message=u'Sua inscrição foi realizada com sucesso! Obrigado!',
+              from_email=settings.DEFAULT_FROM_EMAIL,
+              recipient_list=[email]
+    )
