@@ -3,7 +3,7 @@
 from django.db                import models
 from django.utils.translation import ugettext_lazy as _
 
-from custom_managers          import KindContactManager
+from custom_managers          import KindContactManager, PeriodManager
 
 class Speaker(models.Model):
     name = models.CharField(_('Nome'), max_length=255)
@@ -32,3 +32,18 @@ class Contact(models.Model):
     emails = KindContactManager('E')
     faxes = KindContactManager('F')
 
+class Talk(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    start_time = models.TimeField(blank=True)
+
+    objects = PeriodManager()
+
+    def __unicode__(self):
+        return unicode(self.title)
+
+class Course(Talk):
+    slots = models.IntegerField()
+    notes = models.TextField()
+
+    objects = PeriodManager()
