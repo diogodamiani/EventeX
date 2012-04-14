@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="article" id="article1"> <!-- The new article tag. The id is supplied so it can be scrolled into view. -->
+    <h2>Palestrantes</h2>
+
+    <div class="line"></div>
+
+    <div class="articleBody clear">
+		{% if speaker.avatar %}
+			<p><img src="{{ speaker.avatar.url }}" alt="{{ speaker.name }}" /></p>
+		{% endif %}
+		<h3><a href="{{ speaker.url }}">{{ speaker.name }}</a></h3>
+		<p>{{ speaker.description }}</p>
+	</div>
+</div>
+
+{% endblock content %}

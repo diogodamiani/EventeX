@@ -1,6 +1,4 @@
-# coding=utf-8
-
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults       import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,5 +16,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^$', 'core.views.homepage'),
+    
+    url(r'^', include('core.urls', namespace='core')),
     url(r'^inscricao/', include('subscriptions.urls', namespace='subscriptions')),
 )
