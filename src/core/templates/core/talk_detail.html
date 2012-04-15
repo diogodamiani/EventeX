@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="article" id="article1">
+  <h2>Detalhe da Palestra</h2>
+
+  <div class="line"></div>
+
+  <div class="articleBody clear">
+
+    <h3>{{ talk.title }}</h3>
+    
+    {% for speaker in talk.speaker.all %}
+      <h5><a href="{% url core:speaker_detail speaker.slug %}" title="{{ speaker.description|truncatewords:20 }}">
+        {{ speaker.name }}
+      </a></h5>
+    {% endfor %}
+    
+    <p>{{ talk.description }}</p>
+    
+
+    <p><a href="{% url core:talks %}">Voltar</a></p>
+  </div>
+</div>
+
+{% endblock content %}

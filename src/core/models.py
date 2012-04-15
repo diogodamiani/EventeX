@@ -12,6 +12,9 @@ class Speaker(models.Model):
     description = models.TextField(_('Descrição'), blank=True)
     avatar = models.FileField(_('Avatar'), upload_to='palestrantes', blank=True, null=True)
 
+    class Meta:
+        verbose_name = _('Palestrante')
+
     def __unicode__(self):
         return self.name
 
@@ -32,11 +35,14 @@ class Contact(models.Model):
     emails = KindContactManager('E')
     faxes = KindContactManager('F')
 
+    class Meta:
+        verbose_name = _('Contato')
+
 class Talk(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start_time = models.TimeField(blank=True)
-    speakers = models.ManyToManyField('Speaker', verbose_name=_('palestrante'))
+    title = models.CharField(_('Atividade'), max_length=200)
+    description = models.TextField(_('Descrição'))
+    start_time = models.TimeField(_(u'Início'), blank=True)
+    speakers = models.ManyToManyField('Speaker', verbose_name=_('Palestrantes'))
 
     objects = PeriodManager()
 
@@ -51,3 +57,23 @@ class Course(Talk):
     notes = models.TextField()
 
     objects = PeriodManager()
+
+    class Meta:
+        verbose_name = _('Curso')
+
+class Media(models.Model):
+    MEDIAS = (
+        ('SL', 'SlideShare'),
+        ('YT', 'Youtube'),
+    )
+
+    talk = models.ForeignKey('Talk', verbose_name=_('Palestra'))
+    type = models.CharField(_('Tipo'), max_length=2, choices=MEDIAS)
+    title = models.CharField(_(u'Título'), max_length=255)
+    media_id = models.CharField(_('Embed_Code'), max_length=255)
+
+    class Meta:
+        verbose_name = _(u'Mídia')
+    
+    def __unicode__(self):
+        return u'%s - %s' % (self.talk.title, self.title)
