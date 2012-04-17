@@ -22,14 +22,14 @@
     
             <header> <!-- Defining the header section of the page with the appropriate tag -->
 
-                <h1>EventeX</h1>
-                <h3>O evento mais sensacional do ano!</h3>
+                <h1 id="logo"><a href="/">EventeX</a></h1>
+                <h3 id="slogan">O evento mais sensacional do ano!</h3>
                 
                 <nav class="clear"> <!-- The nav link semantically marks your main site navigation -->
                     <ul>
                         <li><a href="{% url subscriptions:subscribe %}">Inscrições</a></li>
-                        <li><a href="#article2">Agenda</a></li>
-                        <li><a href="#article3">Palestrantes</a></li>
+                        <li><a href="{% url core:talks %}">Agenda</a></li>
+                        <!--<li><a href="#article3">Palestrantes</a></li>-->
                     </ul>
                 </nav>
 

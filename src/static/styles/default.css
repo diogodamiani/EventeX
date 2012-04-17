@@ -35,7 +35,7 @@ h1,h2,h3{
 	text-shadow:0 2px 2px black;
 }
 
-h1{
+#logo {
 	/* The logo text */
 	font-size:4em;
 	padding:0.5em 0 0;
@@ -43,7 +43,14 @@ h1{
 	text-shadow:0 4px 4px black;
 }
 
-h3{
+#logo a, 
+#logo a:hover, 
+#logo a:visited{
+	color:#fcfcfc;
+	text-decoration:none;
+}
+
+#slogan{
 	/* The slogan text */
 	font-family:forte,"Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
 	font-size:1.5em;
@@ -211,6 +218,9 @@ footer a.django{
 	float:right;
 	background-color:#355664;
 }
+
+
+/* Form styling: */
 
 label{ 
 	cursor:pointer;
