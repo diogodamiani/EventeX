@@ -70,7 +70,7 @@ class Media(models.Model):
     talk = models.ForeignKey('Talk', verbose_name=_('Palestra'))
     type = models.CharField(_('Tipo'), max_length=2, choices=MEDIAS)
     title = models.CharField(_(u'Título'), max_length=255)
-    media_id = models.CharField(_('Embed_Code'), max_length=255)
+    media_id = models.CharField(_('Media_ID'), max_length=255)
 
     class Meta:
         verbose_name = _(u'Mídia')

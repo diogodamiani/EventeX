@@ -134,6 +134,7 @@ INSTALLED_APPS = (
 
     # My apps
     'core',
+    'embed',
     'subscriptions',
 )
 
